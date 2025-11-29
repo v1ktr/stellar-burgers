@@ -24,6 +24,7 @@ import { useEffect } from 'react';
 import { useDispatch } from '../../services/store/store';
 import { isAuthChecked } from '../../services/slice/userSlice';
 import { getUser } from '../../services/thunk/userThunk';
+import { getIngredients } from '../../services/thunk/ingredientsThunk';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const App = () => {
 
   useEffect(() => {
     const accessToken = getCookie('accessToken');
+    dispatch(getIngredients());
     if (accessToken) {
       dispatch(getUser());
     } else {
@@ -126,8 +128,8 @@ const App = () => {
             <Route
               path='/ingredients/:id'
               element={
-                <Modal onClose={() => goBack()} title='Ингредиенты'>
-                  <IngredientDetails />
+                <Modal onClose={() => goBack()} title='Детали ингредиента'>
+                  <IngredientDetails isModal />
                 </Modal>
               }
             />

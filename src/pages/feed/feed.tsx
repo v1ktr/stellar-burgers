@@ -9,13 +9,9 @@ import {
   selectFeedsError
 } from '../../services/selector/feedsSelector';
 import { getFeeds } from '../../services/thunk/feedsThunk';
-import { TIngredient } from '@utils-types';
-import { selectIngredients } from '../../services/selector/ingredientsSelector';
-import { getIngredients } from '../../services/thunk/ingredientsThunk';
 
 export const Feed: FC = () => {
   const feedsData = useSelector(selectFeeds);
-  const ingredients: TIngredient[] = useSelector(selectIngredients);
   const isLoading = useSelector(selectFeedsLoading);
   const error = useSelector(selectFeedsError);
   const orders: TOrder[] = feedsData?.orders || [];
@@ -23,9 +19,6 @@ export const Feed: FC = () => {
   useEffect(() => {
     if (!feedsData) {
       dispatch(getFeeds());
-    }
-    if (ingredients.length === 0) {
-      dispatch(getIngredients());
     }
   }, [dispatch, feedsData]);
 

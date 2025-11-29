@@ -7,7 +7,6 @@ import { useSelector, useDispatch } from '../../services/store/store';
 import { selectOrderBurgerDetails } from '../../services/selector/orderBurgerSelector';
 import { selectIngredients } from '../../services/selector/ingredientsSelector';
 import { getOrderByNumber } from '../../services/thunk/orderBurgerThunk';
-import { getIngredients } from '../../services/thunk/ingredientsThunk';
 
 export const OrderInfo: FC = () => {
   const { number } = useParams<{ number: string }>();
@@ -15,9 +14,6 @@ export const OrderInfo: FC = () => {
   const ingredients: TIngredient[] = useSelector(selectIngredients);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (ingredients.length === 0) {
-      dispatch(getIngredients());
-    }
     dispatch(getOrderByNumber(Number(number)));
   }, [dispatch, number]);
 
@@ -67,5 +63,10 @@ export const OrderInfo: FC = () => {
     return <Preloader />;
   }
 
-  return <OrderInfoUI orderInfo={orderInfo} />;
+  return (
+    <>
+      <p className={'text text_type_digits-medium'}>#{number}</p>
+      <OrderInfoUI orderInfo={orderInfo} />
+    </>
+  );
 };
