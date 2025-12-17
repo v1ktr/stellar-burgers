@@ -8,7 +8,7 @@ export interface FeedsState {
   error: string | null;
 }
 
-const initialState: FeedsState = {
+export const initialState: FeedsState = {
   ordersData: null,
   isLoading: false,
   error: null
