@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "name": "Экзо-плантаго spicy краторный бургер",
+  "order": {
+    "_id": "694275aca64177001b323db7",
+    "ingredients": ["643d69a5c3f7b9001cfa093c", "643d69a5c3f7b9001cfa0942", "643d69a5c3f7b9001cfa0949", "643d69a5c3f7b9001cfa093c"],
+    "status": "done",
+    "name": "Экзо-плантаго spicy краторный бургер",
+    "createdAt": "2025-12-17T09:19:40.497Z",
+    "updatedAt": "2025-12-17T09:19:40.701Z",
+    "number": 97411
+  }
+}
